@@ -1,0 +1,16 @@
+namespace: Propositum
+
+views:
+  renderers:
+    php: Fabrico\Renderer\StdHandlers\PhpHandler
+    html: Fabrico\Renderer\StdHandlers\HtmlHandler
+    twig: Fabrico\Renderer\StdHandlers\TwigHandler
+
+cli:
+  commands:
+    - Fabrico\Command\StdCommands\RoutesCommand
+    - Fabrico\Command\StdCommands\ViewConfigCommand
+    - Fabrico\Command\StdCommands\EnvScaffoldingCommand
+    - Fabrico\Command\StdCommands\ModelScaffoldingCommand
+    - Fabrico\Command\StdCommands\ServerCommand
+

@@ -1,0 +1,21 @@
+{
+    "autoload": {
+        "psr-0": {
+            "": "src"
+        }
+    },
+
+    "require": {
+        "minond/fabrico": "dev-master"
+    },
+
+    "require-dev": {
+        "minond/nice_error": "dev-master",
+        "minond/profiler": "dev-master"
+    },
+
+    "config": {
+        "bin-dir": "bin",
+        "component-dir": "public/vendor"
+    }
+}
