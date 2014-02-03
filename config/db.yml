@@ -1,12 +1,12 @@
 development:
   type: file
-  flat: .cache/models
+  flat: .cache/dev/models/
 
 test:
   type: file
-  flat: .cache/tests/models
+  flat: .cache/test/models/
 
 production:
   type: pdo
-  dsn: sqlite:/var/fabrico/propositum/cache/main.db
+  dsn: sqlite:.cache/production/main.db
 
