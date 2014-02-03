@@ -1,4 +1,4 @@
-namespace: Propositum
+namespace: MyApplication
 
 views:
   renderers:
