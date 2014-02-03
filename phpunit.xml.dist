@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="scripts/unit_tests.php" strict="true" verbose="true">
+    <testsuites>
+        <testsuite name="main">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>src</directory>
+        </whitelist>
+    </filter>
+
+    <logging>
+        <log type="coverage-html" target="build/tests/php/coverage" />
+        <log type="coverage-clover" target="build/tests/php/logs/clover.xml" />
+        <log type="junit" target="build/tests/php/logs/junit.xml" />
+    </logging>
+</phpunit>
