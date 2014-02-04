@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="scripts/unit_tests.php" strict="true" verbose="true">
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         strict="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="true"
+         bootstrap="scripts/unit_tests.php">
     <testsuites>
         <testsuite name="main">
             <directory>tests</directory>
@@ -16,5 +26,6 @@
         <log type="coverage-html" target="build/tests/php/coverage" />
         <log type="coverage-clover" target="build/tests/php/logs/clover.xml" />
         <log type="junit" target="build/tests/php/logs/junit.xml" />
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="false" />
     </logging>
 </phpunit>

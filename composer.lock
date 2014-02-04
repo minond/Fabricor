@@ -305,12 +305,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/minond/Fabrico.git",
-                "reference": "3e66beee74335561f4a9f3c4692d30cdcbbed6bb"
+                "reference": "b30d2c13e10685669ee3263adb6da7049563829f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/minond/Fabrico/zipball/3e66beee74335561f4a9f3c4692d30cdcbbed6bb",
-                "reference": "3e66beee74335561f4a9f3c4692d30cdcbbed6bb",
+                "url": "https://api.github.com/repos/minond/Fabrico/zipball/b30d2c13e10685669ee3263adb6da7049563829f",
+                "reference": "b30d2c13e10685669ee3263adb6da7049563829f",
                 "shasum": ""
             },
             "require": {
