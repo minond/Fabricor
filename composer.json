@@ -1,4 +1,8 @@
 {
+    "name": "minond/fabricor",
+    "description": "Skeleton for Fabrico projects",
+    "license": "GPL-2.0+",
+
     "autoload": {
         "psr-0": {
             "": "src"

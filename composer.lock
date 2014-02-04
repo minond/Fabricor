@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "c4bb245682e76e46729f90dff3bcc1df",
+    "hash": "8b6ab19f8010c0315061726bd118e0a4",
     "packages": [
         {
             "name": "components/modernizr",
@@ -695,7 +695,7 @@
                     "email": "fabien@symfony.com"
                 },
                 {
-                    "name": "Armin Ronacher",
+                    "name": "Armin Ronacher2",
                     "email": "armin.ronacher@active-4.com"
                 }
             ],
