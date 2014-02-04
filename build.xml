@@ -31,9 +31,12 @@
     <property name="dir.cache" value=".cache" />
     <property name="dir.src" value="src" />
     <property name="dir.tests" value="tests" />
+
+    <!--
     <condition property="dir.codebase" value="${dir.src} ${dir.tests}" else="${dir.src}">
         <available file="${dir.tests}" type="dir" />
     </condition>
+    -->
 
     <!-- deployment information -->
     <property name="deploy.exclude" value="${dir.cache}, ${dir.build}, ${dir.tests}, .git, **.swp" />
@@ -112,7 +115,8 @@
         <exec executable="${cmd.phploc}">
             <arg value="--log-xml=${dir.build}/code/php/loc.xml" />
             <arg value="--count-tests" />
-            <arg path="${dir.codebase}" />
+            <arg path="${dir.src}" />
+            <arg path="${dir.tests}" />
         </exec>
     </target>
 
@@ -122,7 +126,8 @@
             <arg value="--report=summary" />
             <arg value="--report-full=${dir.build}/code/php/psr2.txt" />
             <arg value="--standard=PSR2" />
-            <arg path="${dir.codebase}" />
+            <arg path="${dir.src}" />
+            <arg path="${dir.tests}" />
         </exec>
     </target>
 
