@@ -4,14 +4,15 @@ namespace MyApplication\Controller;
 
 use Efficio\Http\Request;
 use Efficio\Http\Response;
+use Fabrico\Controller\BaseController;
 use MyApplication\Model\Greeting;
 
-class Hello
+class Hello extends BaseController
 {
-    public function greet(Request $req, Response $res)
+    public function greet()
     {
         $greeting = new Greeting;
         $greeting->label = 'hi';
-        return [ 'greeting' => $greeting ];
+        $this->resource($greeting);
     }
 }
