@@ -47,11 +47,14 @@ try {
     $res->setContentType(Response::HTML);
     $res->setContent(file_get_contents('public/500.html'));
 
-    throw $ex;
-} finally {
     $res->sendHeaders();
     $res->sendContent();
+
+    throw $ex;
 }
+
+$res->sendHeaders();
+$res->sendContent();
 
 return $res;
 
