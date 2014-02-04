@@ -4,6 +4,7 @@ namespace MyApplication\Tests\Configuration;
 
 use PHPUnit_Framework_TestCase;
 use MyApplication\Controller\Hello;
+use Efficio\Http\Request;
 
 class HelloTest extends PHPUnit_Framework_TestCase
 {
@@ -17,11 +18,11 @@ class HelloTest extends PHPUnit_Framework_TestCase
         $this->hello_controller = new Hello;
     }
 
-    public function testGreetAction()
+    public function testGreetActionUsesDefaultName()
     {
         $this->hello_controller->greet();
         $resource = $this->hello_controller->resource;
         $greeting = $resource['greeting'];
-        $this->assertEquals('hi', $greeting->label);
+        $this->assertEquals('World', $greeting->label);
     }
 }

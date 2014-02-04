@@ -2,8 +2,6 @@
 
 namespace MyApplication\Controller;
 
-use Efficio\Http\Request;
-use Efficio\Http\Response;
 use Fabrico\Controller\BaseController;
 use MyApplication\Model\Greeting;
 
@@ -12,7 +10,8 @@ class Hello extends BaseController
     public function greet()
     {
         $greeting = new Greeting;
-        $greeting->label = 'hi';
+        $greeting->label = isset($this->req->param->name) ?
+            $this->req->param->name : 'World';
         $this->resource($greeting);
     }
 }

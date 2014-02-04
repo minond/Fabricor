@@ -1,4 +1,4 @@
-/:
+/{name?}:
   controller: Hello
   action: greet
 
