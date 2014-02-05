@@ -10,4 +10,9 @@ class Greeting extends Model
      * @var string
      */
     protected $label = null;
+
+    /**
+     * @var string
+     */
+    protected $to = null;
 }
