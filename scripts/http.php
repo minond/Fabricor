@@ -2,7 +2,6 @@
 
 namespace Fabrico\Runtime\Setup\Http;
 
-use Fabrico\Application as App;
 use Fabrico\Renderer;
 use Efficio\Http\Request;
 use Efficio\Http\Response;
@@ -18,7 +17,7 @@ $req = new Request;
 $req->importFromGlobals();
 
 $rules = new RuleBook;
-$rules->load(App::normalizeRoutes($conf->get('routes')), true);
+$rules->load($conf->get('routes'), true);
 $app->setRuleBook($rules);
 
 $renderer = new Renderer;
