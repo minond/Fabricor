@@ -13,4 +13,5 @@ cli:
     - Fabrico\Command\StdCommands\EnvScaffoldingCommand
     - Fabrico\Command\StdCommands\ModelScaffoldingCommand
     - Fabrico\Command\StdCommands\ServerCommand
+    - Fabrico\Command\StdCommands\InitializeNewApplication
 
