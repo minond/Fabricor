@@ -18,11 +18,19 @@ class HelloTest extends PHPUnit_Framework_TestCase
         $this->hello_controller = new Hello;
     }
 
+    public function testGreetActionUsesDefaultGreeting()
+    {
+        $this->hello_controller->greet();
+        $resource = $this->hello_controller->resource;
+        $greeting = $resource['greeting'];
+        $this->assertEquals('Hello', $greeting->label);
+    }
+
     public function testGreetActionUsesDefaultName()
     {
         $this->hello_controller->greet();
         $resource = $this->hello_controller->resource;
         $greeting = $resource['greeting'];
-        $this->assertEquals('World', $greeting->label);
+        $this->assertEquals('World', $greeting->to);
     }
 }
