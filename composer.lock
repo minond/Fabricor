@@ -305,12 +305,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/minond/Fabrico.git",
-                "reference": "c2fa984a4bf39919f027513b180d68c56876e338"
+                "reference": "e67d1b0ed685b85ecc73a5a9ff96c7b6092a5651"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/minond/Fabrico/zipball/c2fa984a4bf39919f027513b180d68c56876e338",
-                "reference": "c2fa984a4bf39919f027513b180d68c56876e338",
+                "url": "https://api.github.com/repos/minond/Fabrico/zipball/e67d1b0ed685b85ecc73a5a9ff96c7b6092a5651",
+                "reference": "e67d1b0ed685b85ecc73a5a9ff96c7b6092a5651",
                 "shasum": ""
             },
             "require": {
@@ -348,7 +348,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Small PHP framework",
-            "time": "2014-02-06 04:34:42"
+            "time": "2014-02-06 05:31:59"
         },
         {
             "name": "minond/http",
