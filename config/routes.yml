@@ -2,3 +2,8 @@
   controller: Hello
   action: greet
 
+/robots.txt:
+  base: public
+  file: robots
+  format: txt
+
