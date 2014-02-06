@@ -14,7 +14,7 @@ if (getcwd() === __dir__) {
 // autoloader
 require 'vendor/autoload.php';
 
-return call_user_func(function() {
+return call_user_func(function () {
     $app = new Application;
 
     $conf = new Configuration;
@@ -29,4 +29,3 @@ return call_user_func(function() {
 
     return Application::bind($app);
 });
-

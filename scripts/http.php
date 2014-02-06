@@ -56,4 +56,3 @@ $res->sendHeaders();
 $res->sendContent();
 
 return $res;
-

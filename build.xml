@@ -31,6 +31,8 @@
     <property name="dir.cache" value=".cache" />
     <property name="dir.src" value="src" />
     <property name="dir.tests" value="tests" />
+    <property name="dir.views" value="views" />
+    <property name="dir.scripts" value="scripts" />
 
     <!--
     <condition property="dir.codebase" value="${dir.src} ${dir.tests}" else="${dir.src}">
@@ -128,6 +130,8 @@
             <arg value="--standard=PSR2" />
             <arg path="${dir.src}" />
             <arg path="${dir.tests}" />
+            <arg path="${dir.views}" />
+            <arg path="${dir.scripts}" />
         </exec>
     </target>
 
