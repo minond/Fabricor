@@ -1,0 +1,6 @@
+{
+    "name": "Fabricor",
+    "dependencies": {
+        "angular": "1.2.13"
+    }
+}
