@@ -15,8 +15,7 @@
 
     "require-dev": {
         "minond/nice_error": "dev-master",
-        "minond/profiler": "dev-master",
-        "satooshi/php-coveralls": "dev-master"
+        "minond/profiler": "dev-master"
     },
 
     "config": {
