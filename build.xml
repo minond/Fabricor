@@ -23,6 +23,7 @@
     <property name="cmd.phpcs" value="phpcs" />
     <property name="cmd.phploc" value="phploc" />
     <property name="cmd.composer" value="composer" />
+    <property name="cmd.bower" value="bower" />
     <property name="cmd.apigen" value="apigen" />
 
     <!-- app dir structure -->
@@ -97,12 +98,18 @@
             <arg value="install" />
             <arg value="--no-dev" />
         </exec>
+        <exec executable="${cmd.bower}">
+            <arg value="install" />
+        </exec>
     </target>
 
     <target name="dev-deps" description="prepare application">
         <exec executable="${cmd.composer}">
             <arg value="install" />
             <arg value="--dev" />
+        </exec>
+        <exec executable="${cmd.bower}">
+            <arg value="install" />
         </exec>
     </target>
 
