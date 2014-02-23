@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "8b6ab19f8010c0315061726bd118e0a4",
+    "hash": "e1618f6f504b5f88623cff2dc76798e1",
     "packages": [
         {
             "name": "components/modernizr",

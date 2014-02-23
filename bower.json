@@ -1,6 +1,9 @@
 {
-    "name": "Fabricor",
-    "dependencies": {
-        "angular": "1.2.13"
-    }
+  "name": "Fabricor",
+  "dependencies": {
+    "angular": "~1.2.13",
+    "normalize.css": "~3.0.0",
+    "modernizr": "~2.7.1",
+    "underscore": "~1.6.0"
+  }
 }
