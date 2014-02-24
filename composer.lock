@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e1618f6f504b5f88623cff2dc76798e1",
+    "hash": "ea5d8683703dc432da99250367cd619f",
     "packages": [
         {
             "name": "minond/cache",
@@ -131,12 +131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/minond/Fabrico.git",
-                "reference": "0dc80134fbc4448233124e6386ea2a35dd9a1a1b"
+                "reference": "b5aa0c36ec573b2576adb45d84770b1f7ebba092"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/minond/Fabrico/zipball/0dc80134fbc4448233124e6386ea2a35dd9a1a1b",
-                "reference": "0dc80134fbc4448233124e6386ea2a35dd9a1a1b",
+                "url": "https://api.github.com/repos/minond/Fabrico/zipball/b5aa0c36ec573b2576adb45d84770b1f7ebba092",
+                "reference": "b5aa0c36ec573b2576adb45d84770b1f7ebba092",
                 "shasum": ""
             },
             "require": {
@@ -172,7 +172,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "PHP framework",
-            "time": "2014-02-23 22:19:02"
+            "time": "2014-02-24 05:59:01"
         },
         {
             "name": "minond/http",
