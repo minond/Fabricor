@@ -4,8 +4,9 @@
     "license": "GPL-2.0+",
 
     "autoload": {
-        "psr-0": {
-            "": "src"
+        "psr-4": {
+            "MyApplication\\Controller\\": "app/controllers/",
+            "MyApplication\\Model\\": "app/models/"
         }
     },
 

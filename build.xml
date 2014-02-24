@@ -30,13 +30,12 @@
     <property name="dir.build" value="build" />
     <property name="dir.artifacts" value="build/artifacts" />
     <property name="dir.cache" value=".cache" />
-    <property name="dir.src" value="src" />
+    <property name="dir.app" value="app" />
     <property name="dir.tests" value="tests" />
-    <property name="dir.views" value="views" />
     <property name="dir.scripts" value="scripts" />
 
     <!--
-    <condition property="dir.codebase" value="${dir.src} ${dir.tests}" else="${dir.src}">
+    <condition property="dir.codebase" value="${dir.app} ${dir.tests}" else="${dir.app}">
         <available file="${dir.tests}" type="dir" />
     </condition>
     -->
@@ -124,7 +123,7 @@
         <exec executable="${cmd.phploc}">
             <arg value="--log-xml=${dir.build}/code/php/loc.xml" />
             <arg value="--count-tests" />
-            <arg path="${dir.src}" />
+            <arg path="${dir.app}" />
             <arg path="${dir.tests}" />
         </exec>
     </target>
@@ -135,9 +134,8 @@
             <arg value="--report=summary" />
             <arg value="--report-full=${dir.build}/code/php/psr2.txt" />
             <arg value="--standard=PSR2" />
-            <arg path="${dir.src}" />
+            <arg path="${dir.app}" />
             <arg path="${dir.tests}" />
-            <arg path="${dir.views}" />
             <arg path="${dir.scripts}" />
         </exec>
     </target>
@@ -147,7 +145,7 @@
         <delete dir="${dir.build}/documentation/php" />
         <mkdir dir="${dir.build}/documentation/php" />
         <exec executable="${cmd.apigen}">
-            <arg value="-s=${dir.src}" />
+            <arg value="-s=${dir.app}" />
             <arg value="-d=${dir.build}/documentation/php" />
             <arg value="--todo=yes" />
             <arg value="--colors=no" />
