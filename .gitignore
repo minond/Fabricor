@@ -2,5 +2,6 @@ vendor/
 public/vendor
 bin/
 build/
+node_modules/
 .cache/
 build.properties
