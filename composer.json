@@ -5,8 +5,8 @@
 
     "autoload": {
         "psr-4": {
-            "MyApplication\\Controller\\": "app/controllers/",
-            "MyApplication\\Model\\": "app/models/"
+            "MyApplication\\Controller\\": "app/server/controllers/",
+            "MyApplication\\Model\\": "app/server/models/"
         }
     },
 
