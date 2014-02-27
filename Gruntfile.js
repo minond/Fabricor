@@ -1,20 +1,29 @@
 module.exports = function (grunt) {
     "use strict";
 
-    var test_files = 'tests/**/*_test.js';
-    var js_files = 'src/*';
+    var files = {
+        js: {
+            dir: 'app/client',
+            all: 'app/client/*'
+        },
+
+        tests: {
+            all: 'tests/*'
+        }
+    };
+
     var css_files = 'public/css/*.css';
 
     grunt.initConfig({
         jshint: {
             all: {
-                src: [ js_files ],
+                src: [ files.js.all ],
                 options: {
                     globals: [ 'require' ]
                 }
             },
             report: {
-                src: [ js_files ],
+                src: [ files.js.all ],
                 options: {
                     globals: [ 'require' ],
                     reporterOutput: 'build/code/lint/jshint.txt'
@@ -50,7 +59,7 @@ module.exports = function (grunt) {
         // complexity: http://jscomplexity.org/complexity
         complexity: {
             all: {
-                src: [ js_files ],
+                src: [ files.js.all ],
                 options: {
                     jsLintXML: 'build/code/complexity/report.xml',
                     checkstyleXML: 'build/code/complexity/checkstyle.xml',
@@ -65,7 +74,7 @@ module.exports = function (grunt) {
 
         jasmine: {
             all: {
-                src: [ js_files ],
+                src: [ files.js.all ],
                 options: {
                     specs: [ test_files ],
                     template: require('grunt-template-jasmine-istanbul'),
@@ -138,7 +147,7 @@ module.exports = function (grunt) {
         watch: {
             code: {
                 files: [
-                    js_files,
+                    files.js.all,
                     test_files,
                     css_files
                 ],
@@ -149,7 +158,7 @@ module.exports = function (grunt) {
             },
             tests: {
                 files: [
-                    js_files,
+                    files.js.all,
                     test_files
                 ],
                 tasks: ['test'],
@@ -161,18 +170,11 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('default', [ 'build' ]);
+    grunt.registerTask('build', [ 'clean', 'quality', 'test' ]);
     grunt.registerTask('clean', [ 'rm:build' ]);
-
     grunt.registerTask('test', [ 'jasmine:all' ]);
-    grunt.registerTask('doc', [ 'yuidoc:all' ]);
-
-    grunt.registerTask('build', [
-        'clean',
-        'code',
-        'test'
-    ]);
-
-    grunt.registerTask('code', [
+    grunt.registerTask('documentation', [ 'yuidoc:all' ]);
+    grunt.registerTask('quality', [
         'mkdir:build',
         'complexity:all',
         'jshint:all',

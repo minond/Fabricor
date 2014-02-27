@@ -12,13 +12,13 @@
          bootstrap="scripts/unit_tests.php">
     <testsuites>
         <testsuite name="main">
-            <directory>tests</directory>
+            <directory>tests/server</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>app</directory>
+            <directory>app/server</directory>
         </whitelist>
     </filter>
 
