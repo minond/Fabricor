@@ -7,12 +7,14 @@ module.exports = function (grunt) {
             all: 'app/client/*'
         },
 
+        css: {
+            all: 'public/css/*.css'
+        },
+
         tests: {
             all: 'tests/*'
         }
     };
-
-    var css_files = 'public/css/*.css';
 
     grunt.initConfig({
         jshint: {
@@ -51,7 +53,7 @@ module.exports = function (grunt) {
                         }
                     ]
                 },
-                src: [ css_files ]
+                src: [ files.css.all ]
             }
         },
 
@@ -76,7 +78,7 @@ module.exports = function (grunt) {
             all: {
                 src: [ files.js.all ],
                 options: {
-                    specs: [ test_files ],
+                    specs: [ files.tests.all ],
                     template: require('grunt-template-jasmine-istanbul'),
                     templateOptions: {
                         coverage: 'build/tests/js/converage.json',
@@ -148,8 +150,8 @@ module.exports = function (grunt) {
             code: {
                 files: [
                     files.js.all,
-                    test_files,
-                    css_files
+                    files.tests.all,
+                    files.css.all
                 ],
                 tasks: ['code'],
                 options: {
@@ -159,7 +161,7 @@ module.exports = function (grunt) {
             tests: {
                 files: [
                     files.js.all,
-                    test_files
+                    files.tests.all
                 ],
                 tasks: ['test'],
                 options: {
