@@ -105,6 +105,18 @@ module.exports = function (grunt) {
             }
         },
 
+        // required phpunit
+        // 'require': { 'phpunit/phpunit': '4.7.*@dev' }
+        phpunit: {
+            all: {
+                dir: files.tests.dir
+            },
+            options: {
+                bin: 'phpunit',
+                configuration: 'config/phpunit.xml'
+            }
+        },
+
         // docs: https://github.com/vigetlabs/grunt-complexity
         // complexity: http://jscomplexity.org/complexity
         complexity: {
@@ -248,6 +260,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-phpcs');
     grunt.loadNpmTasks('grunt-phpmd');
+    grunt.loadNpmTasks('grunt-phpunit');
     grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-rm');
 };
