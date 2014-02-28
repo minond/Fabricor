@@ -14,6 +14,7 @@
     "grunt-mkdir": "~0.1.1",
     "grunt-rm": "0.0.4",
     "grunt-template-jasmine-istanbul": "~0.2.5",
-    "grunt-template-jasmine-requirejs": "~0.1.8"
+    "grunt-template-jasmine-requirejs": "~0.1.8",
+    "grunt-contrib-less": "~0.9.0"
   }
 }

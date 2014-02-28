@@ -4,19 +4,36 @@ module.exports = function (grunt) {
     var files = {
         js: {
             dir: 'app/client',
-            all: 'app/client/*'
+            all: 'app/client/**/*.js'
         },
 
         css: {
-            all: 'public/css/*.css'
+            all: 'public/css/**/*.css'
+        },
+
+        less: {
+            dir: 'assets/less'
         },
 
         tests: {
-            all: 'tests/*'
+            all: 'tests/client/**/*.js'
         }
     };
 
     grunt.initConfig({
+        // compilers
+        less: {
+            all: {
+                options: {
+                    paths: [ files.less.dir ]
+                },
+                files: {
+                    'public/css/base.css': 'assets/less/base.less'
+                }
+            }
+        },
+
+        // linters
         jshint: {
             all: {
                 src: [ files.js.all ],
@@ -28,7 +45,8 @@ module.exports = function (grunt) {
                 src: [ files.js.all ],
                 options: {
                     globals: [ 'require' ],
-                    reporterOutput: 'build/code/lint/jshint.txt'
+                    reporter: 'checkstyle',
+                    reporterOutput: 'build/code/lint/js/checkstyle.xml'
                 }
             }
         },
@@ -36,24 +54,19 @@ module.exports = function (grunt) {
         // docs: https://github.com/stubbornella/csslint/wiki/Rules
         csslint: {
             all: {
+                src: [ files.css.all ],
+
                 // TODO: complete rules/options
                 options: {
                     'import': 2,
                     'important': 2,
                     'empty-rules': 2,
 
-                    formatters: [
-                        {
-                            id: 'junit-xml',
-                            dest: 'build/code/lint/csslint_junit.xml'
-                        },
-                        {
-                            id: 'csslint-xml',
-                            dest: 'build/code/lint/csslint.xml'
-                        }
-                    ]
-                },
-                src: [ files.css.all ]
+                    formatters: [{
+                        id: 'checkstyle-xml',
+                        dest: 'build/code/lint/css/checkstyle.xml'
+                    }]
+                }
             }
         },
 
@@ -63,8 +76,7 @@ module.exports = function (grunt) {
             all: {
                 src: [ files.js.all ],
                 options: {
-                    jsLintXML: 'build/code/complexity/report.xml',
-                    checkstyleXML: 'build/code/complexity/checkstyle.xml',
+                    checkstyleXML: 'build/code/complexity/js/checkstyle.xml',
                     breakOnErrors: false,
                     errorsOnly: false,
                     cyclomatic: [ 3, 7, 12 ],
@@ -74,6 +86,7 @@ module.exports = function (grunt) {
             }
         },
 
+        // tests
         jasmine: {
             all: {
                 src: [ files.js.all ],
@@ -84,18 +97,9 @@ module.exports = function (grunt) {
                         coverage: 'build/tests/js/converage.json',
                         report: 'build/tests/js/report/',
 
-                        // thresholds: {
-                        //     lines: 75,
-                        //     statements: 75,
-                        //     branches: 75,
-                        //     functions: 90
-                        // },
-
-                        template: require('grunt-template-jasmine-requirejs'),
-
                         // requirejs template configuration:
-                        templateOptions: {
-                        }
+                        template: require('grunt-template-jasmine-requirejs'),
+                        templateOptions: {}
                     },
                     junit: {
                         path: 'build/tests/js/junit'
@@ -106,12 +110,12 @@ module.exports = function (grunt) {
 
         yuidoc: {
             all: {
-                // name: '<%= pkg.name %>',
-                // description: '<%= pkg.description %>',
-                // version: '<%= pkg.version %>',
+                name: '', // '<%= pkg.name %>',
+                description: '', // '<%= pkg.description %>',
+                version: '', // '<%= pkg.version %>',
                 options: {
-                    paths: 'src',
-                    outdir: 'build/code/documentation'
+                    paths: files.js.dir,
+                    outdir: 'build/code/documentation/js'
                 }
             }
         },
@@ -122,7 +126,7 @@ module.exports = function (grunt) {
                 options: {
                     keepalive: true,
                     debug: true,
-                    hostname: 'localhost',
+                    hostname: '0.0.0.0',
                     port: 9000,
                     base: '.'
                 }
@@ -133,7 +137,7 @@ module.exports = function (grunt) {
             build: {
                 options: {
                     create: [
-                        'build/code/complexity'
+                        'build/code/complexity/js'
                     ]
                 },
             },
@@ -147,23 +151,32 @@ module.exports = function (grunt) {
 
         // livereload Google Chrome plugin: http://goo.gl/cRPr4f
         watch: {
+            compile: {
+                tasks: [ 'compile' ],
+                files: [
+                    files.css.all
+                ],
+                options: {
+                    livereload: 35729
+                }
+            },
             code: {
+                tasks: [ 'quality' ],
                 files: [
                     files.js.all,
                     files.tests.all,
                     files.css.all
                 ],
-                tasks: ['code'],
                 options: {
                     livereload: 35729
                 }
             },
             tests: {
+                tasks: [ 'test' ],
                 files: [
                     files.js.all,
                     files.tests.all
                 ],
-                tasks: ['test'],
                 options: {
                     livereload: 35729
                 }
@@ -172,10 +185,12 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('default', [ 'build' ]);
-    grunt.registerTask('build', [ 'clean', 'quality', 'test' ]);
+    grunt.registerTask('build', [ 'clean', 'compile', 'quality', 'test' ]);
     grunt.registerTask('clean', [ 'rm:build' ]);
-    grunt.registerTask('test', [ 'jasmine:all' ]);
+    grunt.registerTask('compile', [ 'less:all' ]);
     grunt.registerTask('documentation', [ 'yuidoc:all' ]);
+    grunt.registerTask('test', [ 'jasmine:all' ]);
+    grunt.registerTask('server', [ 'connect:server' ]);
     grunt.registerTask('quality', [
         'mkdir:build',
         'complexity:all',
@@ -192,6 +207,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-rm');
 };
