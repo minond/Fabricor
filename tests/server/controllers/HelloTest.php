@@ -31,6 +31,6 @@ class HelloTest extends PHPUnit_Framework_TestCase
         $this->hello_controller->greet();
         $resource = $this->hello_controller->resource;
         $greeting = $resource['greeting'];
-        $this->assertEquals('World', $greeting->to);
+        $this->assertEquals('World', $greeting->noun);
     }
 }
