@@ -20,7 +20,8 @@ module.exports = function (grunt) {
         },
 
         tests: {
-            all: 'tests/client/**/*.js'
+            js: 'tests/client/**/*.js',
+            php: 'tests/client/**/*.js'
         }
     };
 
@@ -40,7 +41,7 @@ module.exports = function (grunt) {
         // linters
         jshint: {
             all: {
-                src: [ files.js.all ],
+                src: [ files.js.all, files.tests.js ],
                 options: {
                     globals: [ 'require' ]
                 }
@@ -92,7 +93,7 @@ module.exports = function (grunt) {
         // complexity: http://jscomplexity.org/complexity
         complexity: {
             all: {
-                src: [ files.js.all ],
+                src: [ files.js.all, files.tests.js ],
                 options: {
                     checkstyleXML: 'build/code/complexity/js/checkstyle.xml',
                     breakOnErrors: false,
@@ -109,7 +110,7 @@ module.exports = function (grunt) {
             all: {
                 src: [ files.js.all ],
                 options: {
-                    specs: [ files.tests.all ],
+                    specs: [ files.tests.js ],
                     template: require('grunt-template-jasmine-istanbul'),
                     templateOptions: {
                         coverage: 'build/tests/js/converage.json',
@@ -183,7 +184,7 @@ module.exports = function (grunt) {
                 tasks: [ 'quality' ],
                 files: [
                     files.js.all,
-                    files.tests.all,
+                    files.tests.js,
                     files.css.all
                 ],
                 options: {
@@ -194,7 +195,7 @@ module.exports = function (grunt) {
                 tasks: [ 'test' ],
                 files: [
                     files.js.all,
-                    files.tests.all
+                    files.tests.js
                 ],
                 options: {
                     livereload: 35729
@@ -211,7 +212,6 @@ module.exports = function (grunt) {
     grunt.registerTask('test', [ 'jasmine:all' ]);
     grunt.registerTask('server', [ 'connect:server' ]);
     grunt.registerTask('quality', [
-        'clean',
         'mkdir:build',
         'complexity:all',
         'jshint:all',
