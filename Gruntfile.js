@@ -7,6 +7,10 @@ module.exports = function (grunt) {
             all: 'app/client/**/*.js'
         },
 
+        php: {
+            all: 'app/server/**/*.php'
+        },
+
         css: {
             all: 'public/css/**/*.css'
         },
@@ -67,6 +71,20 @@ module.exports = function (grunt) {
                         dest: 'build/code/lint/css/checkstyle.xml'
                     }]
                 }
+            }
+        },
+
+        // requires php code sniffer
+        // 'require': { 'squizlabs/php_codesniffer': '1.*' }
+        phpcs: {
+            all: {
+                dir: [ files.php.all ]
+            },
+            options: {
+                bin: 'phpcs',
+                standard: 'PSR2',
+                report: 'summary',
+                reportFile: 'build/code/lint/php/psr2.txt'
             }
         },
 
@@ -137,7 +155,8 @@ module.exports = function (grunt) {
             build: {
                 options: {
                     create: [
-                        'build/code/complexity/js'
+                        'build/code/complexity/js',
+                        'build/code/lint/php'
                     ]
                 },
             },
@@ -192,11 +211,13 @@ module.exports = function (grunt) {
     grunt.registerTask('test', [ 'jasmine:all' ]);
     grunt.registerTask('server', [ 'connect:server' ]);
     grunt.registerTask('quality', [
+        'clean',
         'mkdir:build',
         'complexity:all',
         'jshint:all',
         'jshint:report',
         'csslint:all',
+        'phpcs:all',
         'yuidoc:all'
     ]);
 
@@ -208,6 +229,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-phpcs');
     grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-rm');
 };
