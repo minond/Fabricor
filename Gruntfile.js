@@ -8,6 +8,7 @@ module.exports = function (grunt) {
         },
 
         php: {
+            dir: 'app/server',
             all: 'app/server/**/*.php'
         },
 
@@ -20,8 +21,9 @@ module.exports = function (grunt) {
         },
 
         tests: {
+            dir: 'tests',
             js: 'tests/client/**/*.js',
-            php: 'tests/client/**/*.js'
+            php: 'tests/server/**/*.php'
         }
     };
 
@@ -86,6 +88,20 @@ module.exports = function (grunt) {
                 standard: 'PSR2',
                 report: 'summary',
                 reportFile: 'build/code/lint/php/psr2.txt'
+            }
+        },
+
+        // required php mess detector
+        // 'require': { 'phpmd/phpmd' : '1.4.*' }
+        phpmd: {
+            all: {
+                dir: [ files.php.dir, files.tests.dir ].join(',')
+            },
+            options: {
+                bin: 'phpmd',
+                rulesets: 'codesize,unusedcode,naming',
+                reportFormat: 'xml',
+                reportFile: 'build/code/lint/php/mess.xml'
             }
         },
 
@@ -218,6 +234,7 @@ module.exports = function (grunt) {
         'jshint:report',
         'csslint:all',
         'phpcs:all',
+        'phpmd:all',
         'yuidoc:all'
     ]);
 
@@ -230,6 +247,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-phpcs');
+    grunt.loadNpmTasks('grunt-phpmd');
     grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-rm');
 };

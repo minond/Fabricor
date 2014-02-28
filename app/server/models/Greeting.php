@@ -14,5 +14,5 @@ class Greeting extends Model
     /**
      * @var string
      */
-    protected $to = null;
+    protected $noun = null;
 }

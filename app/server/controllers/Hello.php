@@ -13,8 +13,8 @@ class Hello extends BaseController
 
         $greeting->label = isset($this->req->param->greeting) ?
             $this->req->param->greeting : 'Hello';
-        $greeting->to = isset($this->req->param->to) ?
-            $this->req->param->to : 'World';
+        $greeting->noun = isset($this->req->param->noun) ?
+            $this->req->param->noun : 'World';
 
         $this->resource($greeting);
     }
