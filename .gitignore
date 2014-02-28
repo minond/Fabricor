@@ -1,7 +1,16 @@
-vendor/
-public/vendor
-bin/
-build/
-node_modules/
-.cache/
+# from runtime
+.cache
+.logs
+
+# from build
+build
 build.properties
+
+# from package managers
+bin
+node_modules
+public/vendor
+vendor
+
+# from assets
+public/css
