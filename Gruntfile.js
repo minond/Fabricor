@@ -142,7 +142,19 @@ module.exports = function (grunt) {
                     template: require('grunt-template-jasmine-istanbul'),
                     templateOptions: {
                         coverage: 'build/tests/js/converage.json',
-                        report: 'build/tests/js/report/',
+
+                        // https://github.com/maenu/grunt-template-jasmine-istanbul#templateoptionsreport
+                        report: [
+                            {
+                                type: 'text-summary'
+                            },
+                            {
+                                type: 'html',
+                                options: {
+                                    dir: 'build/tests/js/report/'
+                                }
+                            }
+                        ],
 
                         // requirejs template configuration:
                         template: require('grunt-template-jasmine-requirejs'),
@@ -237,8 +249,11 @@ module.exports = function (grunt) {
     grunt.registerTask('clean', [ 'rm:build' ]);
     grunt.registerTask('compile', [ 'less:all' ]);
     grunt.registerTask('documentation', [ 'yuidoc:all' ]);
-    grunt.registerTask('test', [ 'jasmine:all' ]);
     grunt.registerTask('server', [ 'connect:server' ]);
+    grunt.registerTask('test', [
+        'jasmine:all',
+        'phpunit:all'
+    ]);
     grunt.registerTask('quality', [
         'mkdir:build',
         'complexity:all',
