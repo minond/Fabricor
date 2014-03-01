@@ -222,13 +222,27 @@ module.exports = function (grunt) {
 
         // livereload Google Chrome plugin: http://goo.gl/cRPr4f
         watch: {
-            compile: {
-                tasks: [ 'compile' ],
-                files: [ '<%= pkg.files.css.all %>' ],
+            all: {
+                tasks: [
+                    'compile',
+                    'quality',
+                    'test'
+                ],
+                files: [
+                    '<%= pkg.files.css.all %>'
+                    '<%= pkg.files.js.all %>',
+                    '<%= pkg.files.tests.js %>',
+                ],
                 options: {
                     livereload: 35729
                 }
             },
+
+            compile: {
+                tasks: [ 'compile' ],
+                files: [ '<%= pkg.files.css.all %>' ],
+            },
+
             code: {
                 tasks: [ 'quality' ],
                 files: [
@@ -236,19 +250,14 @@ module.exports = function (grunt) {
                     '<%= pkg.files.tests.js %>',
                     '<%= pkg.files.css.all %>'
                 ],
-                options: {
-                    livereload: 35729
-                }
             },
+
             tests: {
                 tasks: [ 'test' ],
                 files: [
                     '<%= pkg.files.js.all %>',
                     '<%= pkg.files.tests.js %>'
                 ],
-                options: {
-                    livereload: 35729
-                }
             }
         }
     });
