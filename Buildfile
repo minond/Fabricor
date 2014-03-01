@@ -46,7 +46,7 @@ dependencies() {
 }
 
 tests() {
-    run "phpunit tests" phpunit
+    run "phpunit tests" phpunit --configuration config/phpunit.xml
 }
 
 quality() {

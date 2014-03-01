@@ -99,7 +99,7 @@ module.exports = function (grunt) {
             },
             options: {
                 bin: 'phpmd',
-                rulesets: 'codesize,unusedcode,naming',
+                rulesets: 'cleancode, codesize, controversial, design, naming, unusedcode',
                 reportFormat: 'xml',
                 reportFile: 'build/code/lint/php/mess.xml'
             }
