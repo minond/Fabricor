@@ -1,38 +1,40 @@
 module.exports = function (grunt) {
-    "use strict";
-
-    var files = {
-        js: {
-            dir: 'app/client',
-            all: 'app/client/**/*.js'
-        },
-
-        php: {
-            dir: 'app/server',
-            all: 'app/server/**/*.php'
-        },
-
-        css: {
-            all: 'public/css/**/*.css'
-        },
-
-        less: {
-            dir: 'assets/less'
-        },
-
-        tests: {
-            dir: 'tests',
-            js: 'tests/client/**/*.js',
-            php: 'tests/server/**/*.php'
-        }
-    };
+    'use strict';
 
     grunt.initConfig({
+        pkg: {
+            files: {
+                js: {
+                    dir: 'app/client',
+                    all: 'app/client/**/*.js'
+                },
+
+                php: {
+                    dir: 'app/server',
+                    all: 'app/server/**/*.php'
+                },
+
+                css: {
+                    all: 'public/css/**/*.css'
+                },
+
+                less: {
+                    dir: 'assets/less'
+                },
+
+                tests: {
+                    dir: 'tests',
+                    js: 'tests/client/**/*.js',
+                    php: 'tests/server/**/*.php'
+                }
+            }
+        },
+
         // compilers
         less: {
             all: {
                 options: {
-                    paths: [ files.less.dir ]
+                    paths: [ '<%= pkg.files.less.dir %>' ]
                 },
                 files: {
                     'public/css/base.css': 'assets/less/base.less'
@@ -43,13 +45,16 @@ module.exports = function (grunt) {
         // linters
         jshint: {
             all: {
-                src: [ files.js.all, files.tests.js ],
+                src: [
+                    '<%= pkg.files.js.all %>',
+                    '<%= pkg.files.tests.js %>'
+                ],
                 options: {
                     globals: [ 'require' ]
                 }
             },
             report: {
-                src: [ files.js.all ],
+                src: [ '<%= pkg.files.js.all %>' ],
                 options: {
                     globals: [ 'require' ],
                     reporter: 'checkstyle',
@@ -61,7 +66,7 @@ module.exports = function (grunt) {
         // docs: https://github.com/stubbornella/csslint/wiki/Rules
         csslint: {
             all: {
-                src: [ files.css.all ],
+                src: [ '<%= pkg.files.css.all %>' ],
 
                 // TODO: complete rules/options
                 options: {
@@ -81,7 +86,7 @@ module.exports = function (grunt) {
         // 'require': { 'squizlabs/php_codesniffer': '1.*' }
         phpcs: {
             all: {
-                dir: [ files.php.all ]
+                dir: [ '<%= pkg.files.php.all %>' ]
             },
             options: {
                 bin: 'phpcs',
@@ -95,7 +100,10 @@ module.exports = function (grunt) {
         // 'require': { 'phpmd/phpmd' : '1.4.*' }
         phpmd: {
             all: {
-                dir: [ files.php.dir, files.tests.dir ].join(',')
+                dir: [
+                    '<%= pkg.files.php.dir %>',
+                    '<%= pkg.files.tests.dir %>'
+                ].join(',')
             },
             options: {
                 bin: 'phpmd',
@@ -109,7 +117,7 @@ module.exports = function (grunt) {
         // 'require': { 'phpunit/phpunit': '4.7.*@dev' }
         phpunit: {
             all: {
-                dir: files.tests.dir
+                dir: '<%= pkg.files.tests.dir %>'
             },
             options: {
                 bin: 'phpunit',
@@ -121,7 +129,10 @@ module.exports = function (grunt) {
         // complexity: http://jscomplexity.org/complexity
         complexity: {
             all: {
-                src: [ files.js.all, files.tests.js ],
+                src: [
+                    '<%= pkg.files.js.all %>',
+                    '<%= pkg.files.tests.js %>'
+                ],
                 options: {
                     checkstyleXML: 'build/code/complexity/js/checkstyle.xml',
                     breakOnErrors: false,
@@ -136,9 +147,9 @@ module.exports = function (grunt) {
         // tests
         jasmine: {
             all: {
-                src: [ files.js.all ],
+                src: [ '<%= pkg.files.js.all %>' ],
                 options: {
-                    specs: [ files.tests.js ],
+                    specs: [ '<%= pkg.files.tests.js %>' ],
                     template: require('grunt-template-jasmine-istanbul'),
                     templateOptions: {
                         coverage: 'build/tests/js/converage.json',
@@ -173,7 +184,7 @@ module.exports = function (grunt) {
                 description: '', // '<%= pkg.description %>',
                 version: '', // '<%= pkg.version %>',
                 options: {
-                    paths: files.js.dir,
+                    paths: '<%= pkg.files.js.dir %>',
                     outdir: 'build/code/documentation/js'
                 }
             }
@@ -213,9 +224,7 @@ module.exports = function (grunt) {
         watch: {
             compile: {
                 tasks: [ 'compile' ],
-                files: [
-                    files.css.all
-                ],
+                files: [ '<%= pkg.files.css.all %>' ],
                 options: {
                     livereload: 35729
                 }
@@ -223,9 +232,9 @@ module.exports = function (grunt) {
             code: {
                 tasks: [ 'quality' ],
                 files: [
-                    files.js.all,
-                    files.tests.js,
-                    files.css.all
+                    '<%= pkg.files.js.all %>',
+                    '<%= pkg.files.tests.js %>',
+                    '<%= pkg.files.css.all %>'
                 ],
                 options: {
                     livereload: 35729
@@ -234,8 +243,8 @@ module.exports = function (grunt) {
             tests: {
                 tasks: [ 'test' ],
                 files: [
-                    files.js.all,
-                    files.tests.js
+                    '<%= pkg.files.js.all %>',
+                    '<%= pkg.files.tests.js %>'
                 ],
                 options: {
                     livereload: 35729
@@ -250,10 +259,12 @@ module.exports = function (grunt) {
     grunt.registerTask('compile', [ 'less:all' ]);
     grunt.registerTask('documentation', [ 'yuidoc:all' ]);
     grunt.registerTask('server', [ 'connect:server' ]);
+
     grunt.registerTask('test', [
         'jasmine:all',
         'phpunit:all'
     ]);
+
     grunt.registerTask('quality', [
         'mkdir:build',
         'complexity:all',
