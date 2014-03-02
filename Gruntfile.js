@@ -229,9 +229,9 @@ module.exports = function (grunt) {
                     'test'
                 ],
                 files: [
-                    '<%= pkg.files.css.all %>'
+                    '<%= pkg.files.css.all %>',
                     '<%= pkg.files.js.all %>',
-                    '<%= pkg.files.tests.js %>',
+                    '<%= pkg.files.tests.js %>'
                 ],
                 options: {
                     livereload: 35729
