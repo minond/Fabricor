@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ea5d8683703dc432da99250367cd619f",
+    "hash": "ce178a67b6a7a6f5c4949e708c80ed76",
     "packages": [
         {
             "name": "minond/cache",
@@ -131,12 +131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/minond/Fabrico.git",
-                "reference": "b5aa0c36ec573b2576adb45d84770b1f7ebba092"
+                "reference": "4347e54d947b927b37de0e9565d74ea091127f81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/minond/Fabrico/zipball/b5aa0c36ec573b2576adb45d84770b1f7ebba092",
-                "reference": "b5aa0c36ec573b2576adb45d84770b1f7ebba092",
+                "url": "https://api.github.com/repos/minond/Fabrico/zipball/4347e54d947b927b37de0e9565d74ea091127f81",
+                "reference": "4347e54d947b927b37de0e9565d74ea091127f81",
                 "shasum": ""
             },
             "require": {
@@ -172,7 +172,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "PHP framework",
-            "time": "2014-02-24 05:59:01"
+            "time": "2014-02-27 03:47:58"
         },
         {
             "name": "minond/http",
@@ -216,16 +216,16 @@
         },
         {
             "name": "minond/model",
-            "version": "v1.0.1",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/minond/Model.git",
-                "reference": "bf4b26473acab69af8704512e4f1c08de1cc68cb"
+                "reference": "9ed6cf3da6d2a20c4c401db95977e27ef169762b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/minond/Model/zipball/bf4b26473acab69af8704512e4f1c08de1cc68cb",
-                "reference": "bf4b26473acab69af8704512e4f1c08de1cc68cb",
+                "url": "https://api.github.com/repos/minond/Model/zipball/9ed6cf3da6d2a20c4c401db95977e27ef169762b",
+                "reference": "9ed6cf3da6d2a20c4c401db95977e27ef169762b",
                 "shasum": ""
             },
             "require": {
@@ -252,7 +252,7 @@
                 }
             ],
             "description": "Object models",
-            "time": "2014-02-01 19:30:01"
+            "time": "2014-03-01 20:58:41"
         },
         {
             "name": "minond/utilitatis",
