@@ -86,12 +86,15 @@ module.exports = function (grunt) {
         // 'require': { 'squizlabs/php_codesniffer': '1.*' }
         phpcs: {
             all: {
-                dir: [ '<%= pkg.files.php.all %>' ]
+                dir: [
+                    '<%= pkg.files.php.all %>',
+                    '<%= pkg.files.tests.php %>'
+                ]
             },
             options: {
                 bin: 'phpcs',
                 standard: 'PSR2',
-                report: 'summary',
+                report: 'full',
                 reportFile: 'build/code/lint/php/psr2.txt'
             }
         },
@@ -114,7 +117,7 @@ module.exports = function (grunt) {
         },
 
         // required phpunit
-        // 'require': { 'phpunit/phpunit': '4.7.*@dev' }
+        // 'require': { 'phpunit/phpunit': '3.7.*@dev' }
         phpunit: {
             all: {
                 dir: '<%= pkg.files.tests.dir %>'
