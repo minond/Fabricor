@@ -33,9 +33,14 @@ module.exports = function (grunt) {
         // compilers
         sass: {
             all: {
-                files: {
-                    'public/css/base.css': 'public/scss/base.scss'
-                }
+                // http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically
+                files: [{
+                    expand: true,
+                    cwd: '<%= pkg.files.sass.dir %>',
+                    src: [ '**/*.scss' ],
+                    dest: 'public/css',
+                    ext: '.css'
+                }]
             }
         },
 
