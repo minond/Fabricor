@@ -19,7 +19,7 @@ module.exports = function (grunt) {
                 },
 
                 less: {
-                    dir: 'assets/less'
+                    dir: 'public/less'
                 },
 
                 tests: {
@@ -37,7 +37,7 @@ module.exports = function (grunt) {
                     paths: [ '<%= pkg.files.less.dir %>' ]
                 },
                 files: {
-                    'public/css/base.css': 'assets/less/base.less'
+                    'public/css/base.css': 'public/less/base.less'
                 }
             }
         },

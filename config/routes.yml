@@ -2,8 +2,11 @@
   controller: Hello
   action: greet
 
+/signup:
+  controller: Session
+  action: 
+
 /robots.txt:
   base: public
   file: robots
   format: txt
-
