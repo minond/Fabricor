@@ -33,6 +33,12 @@ module.exports = function (grunt) {
         // compilers
         sass: {
             all: {
+                options: {
+                    loadPath: [
+                        'public/vendor/foundation/scss'
+                    ]
+                },
+
                 // http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically
                 files: [{
                     expand: true,
