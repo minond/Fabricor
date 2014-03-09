@@ -5,13 +5,13 @@ module.exports = function (grunt) {
         pkg: {
             files: {
                 js: {
-                    dir: 'app/client',
-                    all: 'app/client/**/*.js'
+                    dir: 'app/assets',
+                    all: 'app/assets/**/*.js'
                 },
 
                 php: {
-                    dir: 'app/server',
-                    all: 'app/server/**/*.php'
+                    dir: 'app',
+                    all: 'app/**/*.php'
                 },
 
                 css: {
@@ -24,8 +24,8 @@ module.exports = function (grunt) {
 
                 tests: {
                     dir: 'tests',
-                    js: 'tests/client/**/*.js',
-                    php: 'tests/server/**/*.php'
+                    js: 'tests/assets/**/*.js',
+                    php: 'tests/**/*.php'
                 }
             }
         },
