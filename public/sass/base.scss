@@ -1,0 +1,35 @@
+body {
+    padding: 20px;
+    cursor: default;
+}
+
+h2 {
+    text-transform: uppercase;
+}
+
+label {
+    margin-right: 10px;
+    text-transform: lowercase;
+    font-style: italic;
+    color: #66798B;
+}
+
+input[type="button"],
+input[type="submit"] {
+    padding: 2px 8px;
+}
+
+input[type="text"] {
+    border: 1px solid #777;
+    padding: 2px;
+}
+
+a {
+    text-transform: lowercase;
+    color: rgb(80, 186, 157);
+}
+
+li span {
+    font: 14px monospace;
+}
+

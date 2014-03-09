@@ -18,8 +18,8 @@ module.exports = function (grunt) {
                     all: 'public/css/**/*.css'
                 },
 
-                less: {
-                    dir: 'public/less'
+                sass: {
+                    dir: 'public/sass'
                 },
 
                 tests: {
@@ -31,13 +31,10 @@ module.exports = function (grunt) {
         },
 
         // compilers
-        less: {
+        sass: {
             all: {
-                options: {
-                    paths: [ '<%= pkg.files.less.dir %>' ]
-                },
                 files: {
-                    'public/css/base.css': 'public/less/base.less'
+                    'public/css/base.css': 'public/sass/base.scss'
                 }
             }
         },
@@ -268,7 +265,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [ 'build' ]);
     grunt.registerTask('build', [ 'clean', 'compile', 'quality', 'test' ]);
     grunt.registerTask('clean', [ 'rm:build' ]);
-    grunt.registerTask('compile', [ 'less:all' ]);
+    grunt.registerTask('compile', [ 'sass:all' ]);
     grunt.registerTask('documentation', [ 'yuidoc:all' ]);
     grunt.registerTask('server', [ 'connect:server' ]);
 
@@ -295,7 +292,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
-    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-phpcs');
     grunt.loadNpmTasks('grunt-phpmd');
     grunt.loadNpmTasks('grunt-phpunit');

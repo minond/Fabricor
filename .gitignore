@@ -1,6 +1,7 @@
 # from runtime
 .cache
 .logs
+.sass-cache
 
 # from build
 build
