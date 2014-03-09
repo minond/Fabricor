@@ -19,7 +19,7 @@ module.exports = function (grunt) {
                 },
 
                 sass: {
-                    dir: 'public/sass'
+                    dir: 'public/scss'
                 },
 
                 tests: {
@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         sass: {
             all: {
                 files: {
-                    'public/css/base.css': 'public/sass/base.scss'
+                    'public/css/base.css': 'public/scss/base.scss'
                 }
             }
         },
