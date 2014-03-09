@@ -19,6 +19,7 @@ module.exports = function (grunt) {
                 },
 
                 sass: {
+                    all: 'public/scss/**/*.scss',
                     dir: 'public/scss'
                 },
 
@@ -30,7 +31,7 @@ module.exports = function (grunt) {
             }
         },
 
-        // compilers
+        // http://sass-lang.com/install
         sass: {
             all: {
                 options: {
@@ -71,22 +72,10 @@ module.exports = function (grunt) {
             }
         },
 
-        // docs: https://github.com/stubbornella/csslint/wiki/Rules
-        csslint: {
-            all: {
-                src: [ '<%= pkg.files.css.all %>' ],
-
-                // TODO: complete rules/options
-                options: {
-                    'import': 2,
-                    'important': 2,
-                    'empty-rules': 2,
-
-                    formatters: [{
-                        id: 'checkstyle-xml',
-                        dest: 'build/code/lint/css/checkstyle.xml'
-                    }]
-                }
+        // https://github.com/causes/scss-lint
+        exec: {
+            scsslint: {
+                cmd: 'scss-lint -f XML <%= pkg.files.sass.dir %> > build/code/lint/scss/linter.xml'
             }
         },
 
@@ -240,7 +229,7 @@ module.exports = function (grunt) {
                     'test'
                 ],
                 files: [
-                    '<%= pkg.files.css.all %>',
+                    '<%= pkg.files.sass.all %>',
                     '<%= pkg.files.js.all %>',
                     '<%= pkg.files.tests.js %>'
                 ],
@@ -251,7 +240,7 @@ module.exports = function (grunt) {
 
             compile: {
                 tasks: [ 'compile' ],
-                files: [ '<%= pkg.files.css.all %>' ],
+                files: [ '<%= pkg.files.sass.all %>' ],
             },
 
             code: {
@@ -290,7 +279,7 @@ module.exports = function (grunt) {
         'complexity:all',
         'jshint:all',
         'jshint:report',
-        'csslint:all',
+        'exec:scsslint',
         'phpcs:all',
         'phpmd:all',
         'yuidoc:all'
@@ -298,15 +287,15 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-complexity');
     grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
-    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-exec');
+    grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-phpcs');
     grunt.loadNpmTasks('grunt-phpmd');
     grunt.loadNpmTasks('grunt-phpunit');
-    grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-rm');
 };
