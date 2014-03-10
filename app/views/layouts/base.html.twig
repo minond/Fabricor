@@ -18,14 +18,26 @@
         <link rel="stylesheet" href="/public/css/base.css">
     </head>
     <body>
-    <!--
-    <div class="contain-to-grid sticky" data-options="sticky_on: large">
-        <nav class="top-bar" data-topbar>dd</nav>
-    </div>
-    -->
-{% block body %}{% endblock %}
+        <nav class="top-bar" data-topbar>
+            <ul class="title-area">
+                <li class="name">
+                    <h1>
+                        <a href="/">MyApplication</a>
+                    </h1>
+                </li>
+            </ul>
+        </nav>
+
+        {% block body %}{% endblock %}
+
         <script type="text/javascript" src="/public/vendor/modernizr/modernizr.js"></script>
         <script type="text/javascript" src="/public/vendor/underscore/underscore.js"></script>
         <script type="text/javascript" src="/public/vendor/angular/angular.js"></script>
+        <script type="text/javascript" src="/public/vendor/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/public/vendor/foundation/js/foundation/foundation.js"></script>
+        <script type="text/javascript" src="/public/vendor/foundation/js/foundation/foundation.topbar.js"></script>
+        <script type="text/javascript">
+        $(document).foundation();
+        </script>
     </body>
 </html>

@@ -208,7 +208,8 @@ module.exports = function (grunt) {
                 options: {
                     create: [
                         'build/code/complexity/js',
-                        'build/code/lint/php'
+                        'build/code/lint/php',
+                        'build/code/lint/scss/'
                     ]
                 },
             },
