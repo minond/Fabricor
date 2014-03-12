@@ -16,7 +16,13 @@
 
     "require-dev": {
         "minond/nice_error": "dev-master",
-        "minond/profiler": "dev-master"
+        "minond/profiler": "dev-master",
+        "phpmd/phpmd" : "1.4.*",
+        "phpunit/phpunit": "4.*",
+        "sebastian/exporter": "1.*",
+        "sebastian/phpcpd": "2.*",
+        "sebastian/phpdcd": "1.*",
+        "squizlabs/php_codesniffer": "1.*"
     },
 
     "config": {

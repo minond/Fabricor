@@ -76,11 +76,21 @@ module.exports = function (grunt) {
         exec: {
             scsslint: {
                 cmd: 'scss-lint -f XML <%= pkg.files.sass.dir %> > build/code/lint/scss/linter.xml'
+            },
+            phpmd: {
+                // removing controversial because of camelCame bs
+                // cleancode rule not in 1.4.*
+                cmd: 'bin/phpmd <%= pkg.files.php.dir %>,<%= pkg.files.tests.dir %> xml codesize,design,naming,unusedcode --reportfile build/code/quality/php/mess.xml --strict'
+            },
+            phpcpd: {
+                cmd: 'bin/phpcpd <%= pkg.files.php.all %> <%= pkg.files.tests.php %>'
+            },
+            phpdcd: {
+                cmd: 'bin/phpdcd <%= pkg.files.php.all %> <%= pkg.files.tests.php %>'
             }
         },
 
         // requires php code sniffer
-        // 'require': { 'squizlabs/php_codesniffer': '1.*' }
         phpcs: {
             all: {
                 dir: [
@@ -89,38 +99,20 @@ module.exports = function (grunt) {
                 ]
             },
             options: {
-                bin: 'phpcs',
+                bin: 'bin/phpcs',
                 standard: 'PSR2',
                 report: 'full',
                 reportFile: 'build/code/lint/php/psr2.txt'
             }
         },
 
-        // required php mess detector
-        // 'require': { 'phpmd/phpmd' : '1.4.*' }
-        phpmd: {
-            all: {
-                dir: [
-                    '<%= pkg.files.php.dir %>',
-                    '<%= pkg.files.tests.dir %>'
-                ].join(',')
-            },
-            options: {
-                bin: 'phpmd',
-                rulesets: 'cleancode, codesize, controversial, design, naming, unusedcode',
-                reportFormat: 'xml',
-                reportFile: 'build/code/lint/php/mess.xml'
-            }
-        },
-
         // required phpunit
-        // 'require': { 'phpunit/phpunit': '3.7.*@dev' }
         phpunit: {
             all: {
                 dir: '<%= pkg.files.tests.dir %>'
             },
             options: {
-                bin: 'phpunit',
+                bin: 'bin/phpunit',
                 configuration: 'config/phpunit.xml'
             }
         },
@@ -134,7 +126,7 @@ module.exports = function (grunt) {
                     '<%= pkg.files.tests.js %>'
                 ],
                 options: {
-                    checkstyleXML: 'build/code/complexity/js/checkstyle.xml',
+                    checkstyleXML: 'build/code/quality/js/checkstyle.xml',
                     breakOnErrors: false,
                     errorsOnly: false,
                     cyclomatic: [ 3, 7, 12 ],
@@ -207,7 +199,8 @@ module.exports = function (grunt) {
             build: {
                 options: {
                     create: [
-                        'build/code/complexity/js',
+                        'build/code/quality/php',
+                        'build/code/quality/js',
                         'build/code/lint/php',
                         'build/code/lint/scss/'
                     ]
@@ -281,8 +274,10 @@ module.exports = function (grunt) {
         'jshint:all',
         'jshint:report',
         'exec:scsslint',
+        'exec:phpcpd',
+        'exec:phpcpd',
+        'exec:phpmd',
         'phpcs:all',
-        'phpmd:all',
         'yuidoc:all'
     ]);
 
@@ -296,7 +291,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-phpcs');
-    grunt.loadNpmTasks('grunt-phpmd');
     grunt.loadNpmTasks('grunt-phpunit');
     grunt.loadNpmTasks('grunt-rm');
 };
