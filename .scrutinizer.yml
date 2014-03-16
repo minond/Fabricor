@@ -3,21 +3,22 @@ imports:
 
 filter:
   excluded_paths:
-    - 'vendor/*'
-    - 'app/*'
-    - 'web/*'
+    - vendor/*
+    - app/*
+    - web/*
 
 before_commands:
-  - 'composer install --prefer-source --dev'
+  - composer install --prefer-source --dev
 
 tools:
   php_analyzer: true
   php_code_coverage:
     test_command: phpunit -c config
-  php_code_sniffer: true
+  php_code_sniffer:
+    config:
+      standard: PSR2
   php_cpd: true
   php_cs_fixer: true
-  # php_hhvm: true
   php_loc: true
   php_mess_detector: true
   php_pdepend: true
