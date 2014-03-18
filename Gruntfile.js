@@ -25,7 +25,7 @@ module.exports = function (grunt) {
 
                 tests: {
                     dir: 'tests',
-                    js: 'tests/assets/**/*.js',
+                    js: 'tests/**/*.js',
                     php: 'tests/**/*.php'
                 }
             }
@@ -83,10 +83,10 @@ module.exports = function (grunt) {
                 cmd: 'bin/phpmd <%= pkg.files.php.dir %>,<%= pkg.files.tests.dir %> xml codesize,design,naming,unusedcode --reportfile build/code/quality/php/mess.xml --strict'
             },
             phpcpd: {
-                cmd: 'bin/phpcpd <%= pkg.files.php.all %> <%= pkg.files.tests.php %>'
+                cmd: 'bin/phpcpd <%= pkg.files.php.all %> <%= pkg.files.tests.dir %>'
             },
             phpdcd: {
-                cmd: 'bin/phpdcd <%= pkg.files.php.all %> <%= pkg.files.tests.php %>'
+                cmd: 'bin/phpdcd <%= pkg.files.php.all %> <%= pkg.files.tests.dir %>'
             }
         },
 
