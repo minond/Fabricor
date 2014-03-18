@@ -1,2 +1,0 @@
-sample test should test parameter passing
-add badges to readme
