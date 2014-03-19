@@ -1,0 +1,9 @@
+default:
+  paths:
+    features: ../tests/features/
+
+  extensions:
+    Behat\MinkExtension\Extension:
+      base_url: http://localhost:8080
+      goutte: ~
+      selenium2: ~

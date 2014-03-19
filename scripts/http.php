@@ -2,14 +2,17 @@
 
 namespace Fabrico\Runtime\Setup\Http;
 
-use Fabrico\Renderer;
 use Efficio\Http\Request;
 use Efficio\Http\Response;
-use Efficio\Http\Status;
 use Efficio\Http\RuleBook;
+use Efficio\Http\Status;
 use Exception;
+use Fabrico\Renderer;
+use Fabrico\Runtime\Instance;
 
-$app = require 'app.php';
+require 'vendor/autoload.php';
+
+$app = Instance::createApplication();
 $conf = $app->getConfiguration();
 
 $res = new Response;
