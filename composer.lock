@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "bb8fc2508970c3426ef5eab9485a84a3",
+    "hash": "deca7cf9b5f9acf72365efbcbdf6f325",
     "packages": [
         {
             "name": "minond/cache",
@@ -131,12 +131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/minond/Fabrico.git",
-                "reference": "ad44f84e7dd44d018b0f32a554d818e45424c71e"
+                "reference": "42933e1ccd760e1bdd1d6a101a23f5c23aaa4c5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/minond/Fabrico/zipball/ad44f84e7dd44d018b0f32a554d818e45424c71e",
-                "reference": "ad44f84e7dd44d018b0f32a554d818e45424c71e",
+                "url": "https://api.github.com/repos/minond/Fabrico/zipball/42933e1ccd760e1bdd1d6a101a23f5c23aaa4c5a",
+                "reference": "42933e1ccd760e1bdd1d6a101a23f5c23aaa4c5a",
                 "shasum": ""
             },
             "require": {
@@ -156,7 +156,8 @@
                 "minond/profiler": "for basic profiling needs"
             },
             "bin": [
-                "bin/console"
+                "bin/console",
+                "bin/selenium"
             ],
             "type": "library",
             "autoload": {
@@ -164,7 +165,8 @@
                     "Fabrico": "src/"
                 },
                 "files": [
-                    "scripts/env.php"
+                    "scripts/env.php",
+                    "scripts/app.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -172,7 +174,7 @@
                 "GPL-2.0+"
             ],
             "description": "PHP framework",
-            "time": "2014-03-16 19:29:18"
+            "time": "2014-03-19 03:33:59"
         },
         {
             "name": "minond/http",

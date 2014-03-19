@@ -23,10 +23,10 @@
         "sebastian/phpcpd": "2.*",
         "sebastian/phpdcd": "1.*",
         "squizlabs/php_codesniffer": "1.*",
-        "behat/behat": "v2.5.2",
-        "behat/mink-extension": "*",
-        "behat/mink-goutte-driver": "*",
-        "behat/mink-selenium2-driver": "*"
+        "behat/behat": "2.5.2",
+        "behat/mink-extension": "1.2.0",
+        "behat/mink-goutte-driver": "1.0.9",
+        "behat/mink-selenium2-driver": "1.1.1"
     },
 
     "config": {
