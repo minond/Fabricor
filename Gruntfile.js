@@ -260,10 +260,19 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('default', [ 'build' ]);
-    grunt.registerTask('build', [ 'clean', 'compile', 'quality', 'test' ]);
+    grunt.registerTask('prepare', [ 'mkdir:build' ]);
     grunt.registerTask('clean', [ 'rm:build' ]);
     grunt.registerTask('compile', [ 'sass:all' ]);
     grunt.registerTask('server', [ 'connect:server' ]);
+
+    grunt.registerTask('build', [
+        'prepare',
+        'clean',
+        'prepare',
+        'compile',
+        'quality',
+        'test'
+    ]);
 
     grunt.registerTask('documentation', [
         'yuidoc:all',
