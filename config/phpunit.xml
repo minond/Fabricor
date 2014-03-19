@@ -9,7 +9,7 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="true"
-         bootstrap="../scripts/unit_tests.php">
+         bootstrap="../vendor/minond/fabrico/scripts/tests.php">
     <testsuites>
         <testsuite name="main">
             <directory>../tests</directory>

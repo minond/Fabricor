@@ -1,5 +1,7 @@
 <?php
 
+namespace MyApplication\Tests\Feature\Bootstrap;
+
 use Behat\Behat\Context\BehatContext;
 use Behat\Behat\Context\ClosuredContextInterface;
 use Behat\Behat\Context\TranslatedContextInterface;
@@ -13,25 +15,21 @@ use Behat\MinkExtension\Context\MinkContext;
  */
 class FeatureContext extends MinkContext
 {
-    /**
-     * initializes context.
-     * every scenario gets its own context object.
-     *
-     * @param array $parameters context parameters (in config/behat.yml)
-     */
-    public function __construct(array $parameters)
-    {
-    }
+    // /**
+    //  * initializes context.
+    //  * every scenario gets its own context object.
+    //  *
+    //  * @param array $parameters context parameters (in config/behat.yml)
+    //  */
+    // public function __construct(array $parameters)
+    // {
+    // }
 
-//
-// Place your definition and hook methods here:
-//
-//    /**
-//     * @Given /^I have done something with "([^"]*)"$/
-//     */
-//    public function iHaveDoneSomethingWith($argument)
-//    {
-//        doSomethingWith($argument);
-//    }
-//
+    // /**
+    //  * @Given /^I have done something with "([^"]*)"$/
+    //  */
+    // public function iHaveDoneSomethingWith($argument)
+    // {
+    //     doSomethingWith($argument);
+    // }
 }
