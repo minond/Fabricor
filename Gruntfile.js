@@ -87,6 +87,9 @@ module.exports = function (grunt) {
             },
             phpdcd: {
                 cmd: 'bin/phpdcd <%= pkg.files.php.all %> <%= pkg.files.tests.dir %>'
+            },
+            apigen: {
+                cmd: 'apigen -s=<%= pkg.files.php.dir %> -d=build/code/documentation/php --todo=yes --colors=no --progressbar=no'
             }
         },
 
@@ -260,8 +263,12 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [ 'clean', 'compile', 'quality', 'test' ]);
     grunt.registerTask('clean', [ 'rm:build' ]);
     grunt.registerTask('compile', [ 'sass:all' ]);
-    grunt.registerTask('documentation', [ 'yuidoc:all' ]);
     grunt.registerTask('server', [ 'connect:server' ]);
+
+    grunt.registerTask('documentation', [
+        'yuidoc:all',
+        'exec:apigen'
+    ]);
 
     grunt.registerTask('test', [
         'jasmine:all',
@@ -277,8 +284,7 @@ module.exports = function (grunt) {
         'exec:phpcpd',
         'exec:phpcpd',
         'exec:phpmd',
-        'phpcs:all',
-        'yuidoc:all'
+        'phpcs:all'
     ]);
 
     grunt.loadNpmTasks('grunt-complexity');
