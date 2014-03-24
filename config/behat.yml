@@ -9,4 +9,5 @@ default:
     Behat\MinkExtension\Extension:
       base_url: http://localhost:8080
       goutte: ~
-      selenium2: ~
+      selenium2:
+        wd_host: http://localhost:8643

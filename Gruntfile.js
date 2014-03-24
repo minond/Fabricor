@@ -90,6 +90,9 @@ module.exports = function (grunt) {
             },
             apigen: {
                 cmd: 'apigen -s=<%= pkg.files.php.dir %> -d=build/code/documentation/php --todo=yes --colors=no --progressbar=no'
+            },
+            phantomjs: {
+                cmd: 'node_modules/.bin/phantomjs --webdriver=8643'
             }
         },
 
