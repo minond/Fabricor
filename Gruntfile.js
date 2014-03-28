@@ -1,6 +1,8 @@
 module.exports = function (grunt) {
     'use strict';
 
+    require('load-grunt-tasks')(grunt);
+
     grunt.initConfig({
         pkg: {
             files: {
@@ -277,23 +279,9 @@ module.exports = function (grunt) {
     grunt.registerTask('compile', [ 'sass:all' ]);
     grunt.registerTask('server', [ 'connect:server' ]);
 
-    grunt.registerTask('build', [
-        'prepare',
-        'clean',
-        'prepare',
-        'compile'
-    ]);
-
-    grunt.registerTask('ci', [
-        'quality',
-        'test',
-        'documentation'
-    ]);
-
-    grunt.registerTask('documentation', [
-        'yuidoc:all',
-        'exec:apigen'
-    ]);
+    grunt.registerTask('build', [ 'prepare', 'clean', 'prepare', 'compile' ]);
+    grunt.registerTask('ci', [ 'quality', 'test', 'documentation' ]);
+    grunt.registerTask('documentation', [ 'yuidoc:all', 'exec:apigen' ]);
 
     grunt.registerTask('test', [ 'test:unit', 'test:integration' ]);
     grunt.registerTask('test:integration', [ 'prepare', 'exec:behat' ]);
@@ -302,7 +290,7 @@ module.exports = function (grunt) {
     grunt.registerTask('test:unit:php', [ 'phpunit:all' ]);
 
     grunt.registerTask('quality', [
-        'mkdir:build',
+        'prepare',
         'complexity:all',
         'jshint:all',
         'jshint:report',
@@ -312,17 +300,4 @@ module.exports = function (grunt) {
         'exec:phpmd',
         'phpcs:all'
     ]);
-
-    grunt.loadNpmTasks('grunt-complexity');
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-jasmine');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-yuidoc');
-    grunt.loadNpmTasks('grunt-exec');
-    grunt.loadNpmTasks('grunt-mkdir');
-    grunt.loadNpmTasks('grunt-phpcs');
-    grunt.loadNpmTasks('grunt-phpunit');
-    grunt.loadNpmTasks('grunt-rm');
 };
