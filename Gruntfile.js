@@ -59,13 +59,17 @@ module.exports = function (grunt) {
                     '<%= pkg.files.tests.js %>'
                 ],
                 options: {
-                    globals: [ 'require' ]
+                    // http://jslinterrors.com/
+                    jshintrc: 'config/jshintrc.json'
                 }
             },
             report: {
-                src: [ '<%= pkg.files.js.all %>' ],
+                src: [
+                    '<%= pkg.files.js.all %>',
+                    '<%= pkg.files.tests.js %>'
+                ],
                 options: {
-                    globals: [ 'require' ],
+                    jshintrc: 'config/jshintrc.json',
                     reporter: 'checkstyle',
                     reporterOutput: 'build/code/lint/js/checkstyle.xml'
                 }
