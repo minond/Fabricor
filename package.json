@@ -21,6 +21,6 @@
     "phantomjs": "~1.9.7-1"
   },
   "scripts": {
-    "test": "grunt test --verbose"
+    "test": "grunt test:unit --verbose"
   }
 }

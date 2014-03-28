@@ -97,6 +97,9 @@ module.exports = function (grunt) {
             },
             phantomjs: {
                 cmd: 'node_modules/.bin/phantomjs --webdriver=8643'
+            },
+            behat: {
+                cmd: 'bin/behat --format junit,html,pretty --out build/tests/integration/junit,build/tests/integration/html/index.html'
             }
         },
 
@@ -212,7 +215,9 @@ module.exports = function (grunt) {
                         'build/code/quality/php',
                         'build/code/quality/js',
                         'build/code/lint/php',
-                        'build/code/lint/scss/'
+                        'build/code/lint/scss/',
+                        'build/tests/integration/junit',
+                        'build/tests/integration/html',
                     ]
                 },
             },
@@ -276,9 +281,13 @@ module.exports = function (grunt) {
         'prepare',
         'clean',
         'prepare',
-        'compile',
+        'compile'
+    ]);
+
+    grunt.registerTask('ci', [
         'quality',
-        'test'
+        'test',
+        'documentation'
     ]);
 
     grunt.registerTask('documentation', [
@@ -286,10 +295,11 @@ module.exports = function (grunt) {
         'exec:apigen'
     ]);
 
-    grunt.registerTask('test', [
-        'jasmine:all',
-        'phpunit:all'
-    ]);
+    grunt.registerTask('test', [ 'test:unit', 'test:integration' ]);
+    grunt.registerTask('test:integration', [ 'prepare', 'exec:behat' ]);
+    grunt.registerTask('test:unit', [ 'test:unit:js', 'test:unit:php' ]);
+    grunt.registerTask('test:unit:js', [ 'jasmine:all' ]);
+    grunt.registerTask('test:unit:php', [ 'phpunit:all' ]);
 
     grunt.registerTask('quality', [
         'mkdir:build',
