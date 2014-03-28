@@ -1,44 +1,44 @@
+# what goes in here? anything configurable in a grunt task can be saved here
+# and used in a task using the `config` merge field. ie, getting all js files
+# would be done like so:
+#
+# <code>
+# {
+#     files: '<%= config.files.js.all %>'
+# }
+# </code>
+
+# application's file/directory structure. should be broken up into type or
+# foraat of the file
 files:
   js:
     dir: app/assets
     all: app/assets/**/*.js
-
   php:
     dir: app
     all: app/**/*.php
-
   css:
     all: public/css/**/*.css
     dest: public/css
-
   sass:
     all: public/scss/**/*.scss
     dir: public/scss
     deps:
       - public/vendor/foundation/scss
-
   tests:
     dir: tests
     js: tests/**/*.js
     php: tests/**/*.php
-
   tasks:
     options:
       dir: ./scripts/tasks/options/
-
   configuration:
     phpunit: config/phpunit.xml
     jshint: config/jshintrc.json
 
+# output destination of any build task. should be grouped by the type of the
+# task that generates the output (ie. a test, auto documentation, etc.)
 artifacts:
-  create:
-    - build/code/quality/php
-    - build/code/quality/js
-    - build/code/lint/php
-    - build/code/lint/scss/
-    - build/tests/integration/junit
-    - build/tests/integration/html
-  cleanup: build
   linters:
     jshint: build/code/lint/js/checkstyle.xml
     complexity: build/code/quality/js/checkstyle.xml
@@ -56,6 +56,11 @@ artifacts:
       coverage: build/tests/js/converage.json
       junit: build/tests/js/junit
       report: build/tests/js/report/
-
-server:
-  port: 9000
+  cleanup: build
+  create:
+    - build/code/quality/php
+    - build/code/quality/js
+    - build/code/lint/php
+    - build/code/lint/scss/
+    - build/tests/integration/junit
+    - build/tests/integration/html
