@@ -1,5 +1,5 @@
 module.exports = {
     build: {
-        dir: 'build'
+        dir: '<%= config.artifacts.cleanup %>'
     }
 };

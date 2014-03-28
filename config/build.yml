@@ -25,3 +25,37 @@ files:
   tasks:
     options:
       dir: ./scripts/tasks/options/
+
+  configuration:
+    phpunit: config/phpunit.xml
+    jshint: config/jshintrc.json
+
+artifacts:
+  create:
+    - build/code/quality/php
+    - build/code/quality/js
+    - build/code/lint/php
+    - build/code/lint/scss/
+    - build/tests/integration/junit
+    - build/tests/integration/html
+  cleanup: build
+  linters:
+    jshint: build/code/lint/js/checkstyle.xml
+    complexity: build/code/quality/js/checkstyle.xml
+    scsslint: build/code/lint/scss/linter.xml
+    phpmd: build/code/quality/php/mess.xml
+    phpcs: build/code/lint/php/psr2.txt
+  documentation:
+    apigen: build/code/documentation/php
+    yuidoc: build/code/documentation/js
+  tests:
+    behat:
+      junit: build/tests/integration/junit
+      html: build/tests/integration/html/index.html
+    jasmine:
+      coverage: build/tests/js/converage.json
+      junit: build/tests/js/junit
+      report: build/tests/js/report/
+
+server:
+  port: 9000

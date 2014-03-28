@@ -9,6 +9,6 @@ module.exports = {
         bin: 'bin/phpcs',
         standard: 'PSR2',
         report: 'full',
-        reportFile: 'build/code/lint/php/psr2.txt'
+        reportFile: '<%= config.artifacts.linters.phpcs %>'
     }
 };

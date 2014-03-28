@@ -4,6 +4,6 @@ module.exports = {
     },
     options: {
         bin: 'bin/phpunit',
-        configuration: 'config/phpunit.xml'
+        configuration: '<%= config.files.configuration.phpunit %>'
     }
 };

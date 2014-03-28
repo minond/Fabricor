@@ -24,8 +24,8 @@ module.exports = function (grunt) {
     grunt.registerTask('server', [ 'connect:server' ]);
 
     grunt.registerTask('build', [ 'prepare', 'clean', 'prepare', 'compile' ]);
-    grunt.registerTask('ci', [ 'quality', 'test', 'documentation' ]);
     grunt.registerTask('documentation', [ 'yuidoc:all', 'exec:apigen' ]);
+    grunt.registerTask('ci', [ 'quality', 'test', 'documentation' ]);
 
     grunt.registerTask('test', [ 'test:unit', 'test:integration' ]);
     grunt.registerTask('test:integration', [ 'prepare', 'exec:behat' ]);

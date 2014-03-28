@@ -5,7 +5,7 @@ module.exports = {
         version: '', // '<%= config.version %>',
         options: {
             paths: '<%= config.files.js.dir %>',
-            outdir: 'build/code/documentation/js'
+            outdir: '<%= config.artifacts.documentation.yuidoc %>'
         }
     }
 };

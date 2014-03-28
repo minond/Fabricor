@@ -7,7 +7,7 @@ module.exports = {
             '<%= config.files.tests.js %>'
         ],
         options: {
-            checkstyleXML: 'build/code/quality/js/checkstyle.xml',
+            checkstyleXML: '<%= config.artifacts.linters.complexity %>',
             breakOnErrors: false,
             errorsOnly: false,
             cyclomatic: [ 3, 7, 12 ],

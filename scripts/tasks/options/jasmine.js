@@ -5,7 +5,7 @@ module.exports = {
             specs: [ '<%= config.files.tests.js %>' ],
             template: require('grunt-template-jasmine-istanbul'),
             templateOptions: {
-                coverage: 'build/tests/js/converage.json',
+                coverage: '<%= config.artifacts.tests.jasmine.coverage %>',
 
                 // https://github.com/maenu/grunt-template-jasmine-istanbul#templateoptionsreport
                 report: [
@@ -15,7 +15,7 @@ module.exports = {
                     {
                         type: 'html',
                         options: {
-                            dir: 'build/tests/js/report/'
+                            dir: '<%= config.artifacts.tests.jasmine.report %>'
                         }
                     }
                 ],
@@ -25,7 +25,7 @@ module.exports = {
                 templateOptions: {}
             },
             junit: {
-                path: 'build/tests/js/junit'
+                path: '<%= config.artifacts.tests.jasmine.junit %>'
             }
         }
     }

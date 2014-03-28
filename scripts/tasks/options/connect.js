@@ -5,7 +5,7 @@ module.exports = {
             keepalive: true,
             debug: true,
             hostname: '0.0.0.0',
-            port: 9000,
+            port: '<%= config.server.port %>',
             base: '.'
         }
     }

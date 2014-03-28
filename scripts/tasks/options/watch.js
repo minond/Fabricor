@@ -18,7 +18,9 @@ module.exports = {
 
     compile: {
         tasks: [ 'compile' ],
-        files: [ '<%= config.files.sass.all %>' ],
+        files: [
+            '<%= config.files.sass.all %>'
+        ],
     },
 
     code: {

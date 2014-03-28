@@ -6,7 +6,7 @@ module.exports = {
         ],
         options: {
             // http://jslinterrors.com/
-            jshintrc: 'config/jshintrc.json'
+            jshintrc: '<%= config.files.configuration.jshint %>'
         }
     },
     report: {
@@ -15,9 +15,9 @@ module.exports = {
             '<%= config.files.tests.js %>'
         ],
         options: {
-            jshintrc: 'config/jshintrc.json',
+            jshintrc: '<%= config.files.configuration.jshint %>',
             reporter: 'checkstyle',
-            reporterOutput: 'build/code/lint/js/checkstyle.xml'
+            reporterOutput: '<%= config.artifacts.linters.jshint %>',
         }
     }
 };
