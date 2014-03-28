@@ -1,0 +1,20 @@
+files:
+  js:
+    dir: app/assets
+    all: app/assets/**/*.js
+
+  php:
+    dir: app
+    all: app/**/*.php
+
+  css:
+    all: public/css/**/*.css
+
+  sass:
+    all: public/scss/**/*.scss
+    dir: public/scss
+
+  tests:
+    dir: tests
+    js: tests/**/*.js
+    php: tests/**/*.php

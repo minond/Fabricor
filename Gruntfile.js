@@ -4,34 +4,7 @@ module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
-        pkg: {
-            files: {
-                js: {
-                    dir: 'app/assets',
-                    all: 'app/assets/**/*.js'
-                },
-
-                php: {
-                    dir: 'app',
-                    all: 'app/**/*.php'
-                },
-
-                css: {
-                    all: 'public/css/**/*.css'
-                },
-
-                sass: {
-                    all: 'public/scss/**/*.scss',
-                    dir: 'public/scss'
-                },
-
-                tests: {
-                    dir: 'tests',
-                    js: 'tests/**/*.js',
-                    php: 'tests/**/*.php'
-                }
-            }
-        },
+        config: grunt.file.readYAML('config/build.yml'),
 
         // http://sass-lang.com/install
         sass: {
@@ -45,7 +18,7 @@ module.exports = function (grunt) {
                 // http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically
                 files: [{
                     expand: true,
-                    cwd: '<%= pkg.files.sass.dir %>',
+                    cwd: '<%= config.files.sass.dir %>',
                     src: [ '**/*.scss' ],
                     dest: 'public/css',
                     ext: '.css'
@@ -57,8 +30,8 @@ module.exports = function (grunt) {
         jshint: {
             all: {
                 src: [
-                    '<%= pkg.files.js.all %>',
-                    '<%= pkg.files.tests.js %>'
+                    '<%= config.files.js.all %>',
+                    '<%= config.files.tests.js %>'
                 ],
                 options: {
                     // http://jslinterrors.com/
@@ -67,8 +40,8 @@ module.exports = function (grunt) {
             },
             report: {
                 src: [
-                    '<%= pkg.files.js.all %>',
-                    '<%= pkg.files.tests.js %>'
+                    '<%= config.files.js.all %>',
+                    '<%= config.files.tests.js %>'
                 ],
                 options: {
                     jshintrc: 'config/jshintrc.json',
@@ -81,21 +54,21 @@ module.exports = function (grunt) {
         // https://github.com/causes/scss-lint
         exec: {
             scsslint: {
-                cmd: 'scss-lint -f XML <%= pkg.files.sass.dir %> > build/code/lint/scss/linter.xml'
+                cmd: 'scss-lint -f XML <%= config.files.sass.dir %> > build/code/lint/scss/linter.xml'
             },
             phpmd: {
                 // removing controversial because of camelCame bs
                 // cleancode rule not in 1.4.*
-                cmd: 'bin/phpmd <%= pkg.files.php.dir %>,<%= pkg.files.tests.dir %> xml codesize,design,naming,unusedcode --reportfile build/code/quality/php/mess.xml --strict'
+                cmd: 'bin/phpmd <%= config.files.php.dir %>,<%= config.files.tests.dir %> xml codesize,design,naming,unusedcode --reportfile build/code/quality/php/mess.xml --strict'
             },
             phpcpd: {
-                cmd: 'bin/phpcpd <%= pkg.files.php.all %> <%= pkg.files.tests.dir %>'
+                cmd: 'bin/phpcpd <%= config.files.php.all %> <%= config.files.tests.dir %>'
             },
             phpdcd: {
-                cmd: 'bin/phpdcd <%= pkg.files.php.all %> <%= pkg.files.tests.dir %>'
+                cmd: 'bin/phpdcd <%= config.files.php.all %> <%= config.files.tests.dir %>'
             },
             apigen: {
-                cmd: 'apigen -s=<%= pkg.files.php.dir %> -d=build/code/documentation/php --todo=yes --colors=no --progressbar=no'
+                cmd: 'apigen -s=<%= config.files.php.dir %> -d=build/code/documentation/php --todo=yes --colors=no --progressbar=no'
             },
             phantomjs: {
                 cmd: 'node_modules/.bin/phantomjs --webdriver=8643'
@@ -109,8 +82,8 @@ module.exports = function (grunt) {
         phpcs: {
             all: {
                 dir: [
-                    '<%= pkg.files.php.all %>',
-                    '<%= pkg.files.tests.php %>'
+                    '<%= config.files.php.all %>',
+                    '<%= config.files.tests.php %>'
                 ]
             },
             options: {
@@ -124,7 +97,7 @@ module.exports = function (grunt) {
         // required phpunit
         phpunit: {
             all: {
-                dir: '<%= pkg.files.tests.dir %>'
+                dir: '<%= config.files.tests.dir %>'
             },
             options: {
                 bin: 'bin/phpunit',
@@ -137,8 +110,8 @@ module.exports = function (grunt) {
         complexity: {
             all: {
                 src: [
-                    '<%= pkg.files.js.all %>',
-                    '<%= pkg.files.tests.js %>'
+                    '<%= config.files.js.all %>',
+                    '<%= config.files.tests.js %>'
                 ],
                 options: {
                     checkstyleXML: 'build/code/quality/js/checkstyle.xml',
@@ -154,9 +127,9 @@ module.exports = function (grunt) {
         // tests
         jasmine: {
             all: {
-                src: [ '<%= pkg.files.js.all %>' ],
+                src: [ '<%= config.files.js.all %>' ],
                 options: {
-                    specs: [ '<%= pkg.files.tests.js %>' ],
+                    specs: [ '<%= config.files.tests.js %>' ],
                     template: require('grunt-template-jasmine-istanbul'),
                     templateOptions: {
                         coverage: 'build/tests/js/converage.json',
@@ -187,11 +160,11 @@ module.exports = function (grunt) {
 
         yuidoc: {
             all: {
-                name: '', // '<%= pkg.name %>',
-                description: '', // '<%= pkg.description %>',
-                version: '', // '<%= pkg.version %>',
+                name: '', // '<%= config.name %>',
+                description: '', // '<%= config.description %>',
+                version: '', // '<%= config.version %>',
                 options: {
-                    paths: '<%= pkg.files.js.dir %>',
+                    paths: '<%= config.files.js.dir %>',
                     outdir: 'build/code/documentation/js'
                 }
             }
@@ -240,9 +213,9 @@ module.exports = function (grunt) {
                     'test'
                 ],
                 files: [
-                    '<%= pkg.files.sass.all %>',
-                    '<%= pkg.files.js.all %>',
-                    '<%= pkg.files.tests.js %>'
+                    '<%= config.files.sass.all %>',
+                    '<%= config.files.js.all %>',
+                    '<%= config.files.tests.js %>'
                 ],
                 options: {
                     livereload: 35729
@@ -251,23 +224,23 @@ module.exports = function (grunt) {
 
             compile: {
                 tasks: [ 'compile' ],
-                files: [ '<%= pkg.files.sass.all %>' ],
+                files: [ '<%= config.files.sass.all %>' ],
             },
 
             code: {
                 tasks: [ 'quality' ],
                 files: [
-                    '<%= pkg.files.js.all %>',
-                    '<%= pkg.files.tests.js %>',
-                    '<%= pkg.files.css.all %>'
+                    '<%= config.files.js.all %>',
+                    '<%= config.files.tests.js %>',
+                    '<%= config.files.css.all %>'
                 ],
             },
 
             tests: {
                 tasks: [ 'test' ],
                 files: [
-                    '<%= pkg.files.js.all %>',
-                    '<%= pkg.files.tests.js %>'
+                    '<%= config.files.js.all %>',
+                    '<%= config.files.tests.js %>'
                 ],
             }
         }
