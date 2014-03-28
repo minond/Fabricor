@@ -9,12 +9,19 @@ files:
 
   css:
     all: public/css/**/*.css
+    dest: public/css
 
   sass:
     all: public/scss/**/*.scss
     dir: public/scss
+    deps:
+      - public/vendor/foundation/scss
 
   tests:
     dir: tests
     js: tests/**/*.js
     php: tests/**/*.php
+
+  tasks:
+    options:
+      dir: ./scripts/tasks/options/
