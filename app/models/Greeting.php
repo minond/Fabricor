@@ -1,6 +1,6 @@
 <?php
 
-namespace MyApplication\Model;
+namespace Application\Model;
 
 use Fabrico\Model\Model;
 

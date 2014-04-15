@@ -1,6 +1,6 @@
 default:
   context:
-    class: MyApplication\Tests\Feature\Bootstrap\FeatureContext
+    class: Application\Tests\Feature\Bootstrap\FeatureContext
 
   paths:
     features: ../tests/features/

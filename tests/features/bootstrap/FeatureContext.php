@@ -1,6 +1,6 @@
 <?php
 
-namespace MyApplication\Tests\Feature\Bootstrap;
+namespace Application\Tests\Feature\Bootstrap;
 
 use Behat\Behat\Context\BehatContext;
 use Behat\Behat\Context\ClosuredContextInterface;

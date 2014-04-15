@@ -1,9 +1,9 @@
 <?php
 
-namespace MyApplication\Controller;
+namespace Application\Controller;
 
 use Fabrico\Controller\BaseController;
-use MyApplication\Model\Greeting;
+use Application\Model\Greeting;
 
 class Hello extends BaseController
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace MyApplication\Tests\Unit\Controller;
+namespace Application\Tests\Unit\Controller;
 
 use PHPUnit_Framework_TestCase;
-use MyApplication\Controller\Hello;
+use Application\Controller\Hello;
 use Efficio\Http\Request;
 
 class HelloTest extends PHPUnit_Framework_TestCase
